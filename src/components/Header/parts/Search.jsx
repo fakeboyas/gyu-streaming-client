@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-function Search() {
+function Search(props) {
     const Wrapper = styled.div`
         width: 25%;
+        .search-open {
+            display: ${props.toggle.open};
+        }
+
+        .search-close {
+            display: ${props.toggle.close};
+        }
     `;
+
     return (
         <Wrapper className="d-flex flex-row justify-content-around">
-            <div className="search btn d-flex w-25 justify-content-around align-items-center">
-                <span> Cari </span>
-                <i className="fa fa-search" aria-hidden="true"></i>
+            <div
+                onClick={props.handleOpenSearch}
+                className="search-open btn text-light"
+            >
+                <span>
+                    Cari <i className="fa fa-search" aria-hidden="true"></i>
+                </span>
             </div>
+            <div
+                onClick={props.handleCloseSearch}
+                className="search-close btn text-light"
+            >
+                <span>
+                    {" "}
+                    Cari
+                    <i className="fa fa-times" aria-hidden="true"></i>
+                </span>
+            </div>
+
             <div className="d-flex flex-row align-items-center">
                 <div className="btn btn-primary rounded-pill">
                     <span>Masuk Akun / Daftar</span>
